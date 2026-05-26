@@ -1,15 +1,42 @@
-Financial-Anomaly-Detection-Research
-Research Objective
-This research aims to investigate anomalous behaviors in cross-border financial batch processing. 
-By employing process mining to reconstruct transaction audit trails and integrating automated root cause analysis, 
-this study proposes a prototype system for digital forensics.
+Financial Anomaly Detection Research
 
-Key Features
-1. Synthetic Log Generation
-2. Automated Anomaly Detection
-3. Diagnostic Dashboard
+1. Research Objective
+This project aims to simulate cross-border financial batch processing logs 
+and explore anomaly detection mechanisms in enterprise IT operations.
+Based on practical observations from financial information system monitoring, 
+this research focuses on identifying abnormal job execution behaviors, 
+dependency failures, and operational risks in batch processing environments.
+The project further attempts to analyze process relationships between jobs 
+and establish a prototype framework for risk monitoring and operational diagnostics.
 
-How to Run
-1. Clone this repository.
-2. Run `Generate_data.py` to simulate the data.
-3. Run `Analyze_data.py` to launch the monitoring dashboard.
+2. Key Features
+- Synthetic financial batch log generation
+- Automated anomaly classification
+- Cross-branch risk analysis
+- Process relationship analysis
+- Visualization dashboard for operational monitoring
+
+3. Project Architecture
+
+Simulated Batch Logs
+        ↓
+Anomaly Classification
+        ↓
+Process Dependency Analysis
+        ↓
+Visualization Dashboard
+        ↓
+Operational Risk Monitoring
+
+4. How to Run
+1. Clone this repository
+2. Run `Generate_data.py` to generate synthetic logs
+3. Run `Analyze_data.py` to perform anomaly analysis and visualization
+
+5. Future Work
+- Process mining integration
+- Isolation Forest anomaly detection
+- Dynamic risk scoring
+- Automated forensic analysis
+- SIEM integration
+- Real-time alert mechanisms
