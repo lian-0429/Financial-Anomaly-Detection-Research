@@ -40,3 +40,5 @@ Operational Risk Monitoring
 - Automated forensic analysis
 - SIEM integration
 - Real-time alert mechanisms
+- 
+<img width="1900" height="985" alt="image" src="https://github.com/user-attachments/assets/b8e6d4d6-c01f-4f55-b070-e6439313bb47" />
