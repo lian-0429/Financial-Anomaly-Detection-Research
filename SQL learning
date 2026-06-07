@@ -1,3 +1,17 @@
-Sasdsdas
+SQL learning from SQLZOO
 
-SELECT name, continent, population FROM world
+Question 1
+The example uses a WHERE clause to show the population of 'France'. Note that strings should be in 'single quotes';
+Modify it to show the population of Germany
+Answer 1
+SELECT population FROM world
+WHERE name = 'Germany'
+
+Question 2
+The example uses a WHERE clause to show the population of 'France'. Note that strings should be in 'single quotes';
+Modify it to show the population of Germany
+Answer 2
+SELECT name, population
+FROM world
+WHERE name IN ('Sweden', 'Norway', 'Denmark');
+
