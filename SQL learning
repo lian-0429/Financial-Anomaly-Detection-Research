@@ -4,7 +4,8 @@ Question 1
 The example uses a WHERE clause to show the population of 'France'. Note that strings should be in 'single quotes';
 Modify it to show the population of Germany
 Answer 1
-SELECT population FROM world
+SELECT population 
+FROM world
 WHERE name = 'Germany'
 
 Question 2
@@ -14,4 +15,52 @@ Answer 2
 SELECT name, population
 FROM world
 WHERE name IN ('Sweden', 'Norway', 'Denmark');
+
+Question 3
+Which countries are not too small and not too big? BETWEEN allows range checking (range specified is inclusive of boundary values). 
+The example below shows countries with an area of 250,000-300,000 sq. km.
+Modify it to show the country and the area for countries with an area between 200,000 and 250,000.
+Answer 3
+SELECT name, area 
+FROM world
+WHERE area BETWEEN 200000 AND 250000
+
+Question 4
+Give the name and the per capita GDP for those countries with a population of at least 200 million.
+Answer 4
+SELECT name, GDP/population
+FROM world
+WHERE population >= 200000000
+
+Question 5
+Show the name and population in millions for the countries of the continent 'South America'. 
+Divide the population by 1000000 to get population in millions.
+Answer 5
+SELECT name, population/1000000
+FROM world
+WHERE continent = 'South America'
+
+Question 6
+Show the countries which have a name that includes the word 'United'
+Answer 6
+SELECT name
+FROM world
+WHERE name LIKE '%United%'
+
+Question 7
+Equatorial Guinea and Dominican Republic have all of the vowels (a e i o u) in the name. 
+They don't count because they have more than one word in the name.
+Find the country that has all the vowels and no spaces in its name.
+Answer 7
+SELECT name
+   FROM world
+WHERE name LIKE '%A%'
+ AND name LIKE '%E%'
+ AND name LIKE '%I%'
+ AND name LIKE '%O%'
+ AND name LIKE '%U%'
+ AND name NOT LIKE '% %'
+
+
+
 
