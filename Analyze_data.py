@@ -1,4 +1,5 @@
 import sys
+import sqlite3
 import tkinter as tk
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -6,9 +7,11 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 # 1. Data Processing
 try:
-    df = pd.read_csv('simulated_bank_batch_flow_log.csv')
-except FileNotFoundError:
-    print("Error: 'simulated_bank_batch_flow_log.csv' not found.")
+    conn = sqlite3.connect('bank_batch_data.db')
+    df = pd.read_sql_query("SELECT * FROM batch_logs", conn)
+    conn.close()
+except Exception as e:
+    print(f"Error: {e}")
     sys.exit()
 
 total_logs = len(df)
@@ -29,12 +32,19 @@ def get_branch_metrics(branch_code):
 
 
 hk_total, hk_net, hk_human, hk_auth = get_branch_metrics('HK')
-ny_total, ny_net, ny_human, ny_auth = get_branch_metrics('NY')
+us_total, us_net, us_human, us_auth = get_branch_metrics('US')
 sg_total, sg_net, sg_human, sg_auth = get_branch_metrics('SG')
+cn_total, cn_net, cn_human, cn_auth = get_branch_metrics('CN')
+uk_total, uk_net, uk_human, uk_auth = get_branch_metrics('UK')
+nz_total, nz_net, nz_human, nz_auth = get_branch_metrics('NZ')
+in_total, in_net, in_human, in_auth = get_branch_metrics('IN')
 
-grand_net = hk_net + ny_net + sg_net
-grand_human = hk_human + ny_human + sg_human
-grand_auth = hk_auth + ny_auth + sg_auth
+
+
+
+grand_net = hk_net + us_net + sg_net + cn_net + uk_net + nz_net + in_net
+grand_human = hk_human + us_human + sg_human + cn_human + uk_human + nz_human + in_human
+grand_auth = hk_auth + us_auth + sg_auth + cn_auth + uk_auth + nz_auth + in_auth
 
 # 2. Tkinter UI (Professional English Dashboard)
 root = tk.Tk()
@@ -92,8 +102,12 @@ def create_detailed_status(parent, code, name, total, net, human, auth, color):
 
 
 create_detailed_status(left_frame, "HK", "Hong Kong Branch", hk_total, hk_net, hk_human, hk_auth, "#F87171")
-create_detailed_status(left_frame, "NY", "New York Branch", ny_total, ny_net, ny_human, ny_auth, "#FBBF24")
+create_detailed_status(left_frame, "US", "United States of America Branch", us_total, us_net, us_human, us_auth, "#FBBF24")
 create_detailed_status(left_frame, "SG", "Singapore Branch", sg_total, sg_net, sg_human, sg_auth, "#FB923C")
+create_detailed_status(left_frame, "CN", "China Branch", cn_total, cn_net, cn_human, cn_auth, "#F87171")
+create_detailed_status(left_frame, "Uk", "United Kingdom Branch", uk_total, uk_net, uk_human, uk_auth, "#FBBF24")
+create_detailed_status(left_frame, "NZ", "New Zealand Branch", nz_total, nz_net, nz_human, nz_auth, "#FB923C")
+create_detailed_status(left_frame, "IN", "India Branch", in_total, in_net, in_human, in_auth, "#F87171")
 
 # Right Panel
 right_frame = tk.Frame(main_frame, bg='#1A1A1E', highlightbackground='#2D2D34', highlightthickness=1)
