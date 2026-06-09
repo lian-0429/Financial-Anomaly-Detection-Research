@@ -61,6 +61,63 @@ WHERE name LIKE '%A%'
  AND name LIKE '%U%'
  AND name NOT LIKE '% %'
 
+Question 7
+Change the query shown so that it displays Nobel prizes for 1950.
+Answer 7
+select yr, subject, winner
+from nobel
+where yr = 1950
+
+Question 8
+Show who won the 1962 prize for literature.
+Answer 8
+select winner
+from nobel
+where yr=1962 and subject = 'literature'
+
+Question 9
+Show the year and subject that won 'Albert Einstein' his prize.
+Answer 9
+select yr, subject
+from nobel
+where winner = 'Albert Einstein'
+
+Question 10
+Give the name of the 'Peace' winners since the year 2000, including 2000.
+Answer 10
+select winner
+from nobel
+where subject = 'peace' and yr>= 2000
+
+Question 11
+Show all details (yr, subject, winner) of the literature prize winners for 1980 to 1989 inclusive.
+Answer 11
+select yr, subject, winner
+from nobel
+where yr between 1980 and 1989 and subject = 'literature'
+
+Question 12
+Show all details of the presidential winners:
+Theodore Roosevelt
+Thomas Woodrow Wilson
+Jimmy Carter
+Barack Obama
+Answer 12
+SELECT yr, subject, winner
+FROM nobel
+WHERE winner IN ('Theodore Roosevelt', 'Thomas Woodrow Wilson', 'Jimmy Carter', 'Barack Obama')
+
+Question 13
+Show the winners with first name John
+Answer 13
+select winner
+from nobel
+where name like 'John%'
+
+
+
+
+
 
 
 
